@@ -7,9 +7,11 @@ Docker commands reequire the Docker daemon to be running (and a light-weight vir
 These images are already pre-built on [Docker Hub](https://hub.docker.com/) under the flyem namespace.
 
 To retrieve image XYZ:
+    
     % docker pull flyem/XYZ
 
 If you prefer to build the image XYZ from the dockerfile:
+   
     % cd XYZ
     % docker build -t XYZ .
 
