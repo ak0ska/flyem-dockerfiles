@@ -1,0 +1,27 @@
+2015/09/04-21:02:13.500737 7fee4b64a700             Options.comparator: leveldb.InternalKeyComparator
+2015/09/04-21:02:13.501031 7fee4b64a700      Options.create_if_missing: 0
+2015/09/04-21:02:13.501130 7fee4b64a700        Options.error_if_exists: 0
+2015/09/04-21:02:13.501253 7fee4b64a700        Options.paranoid_checks: 0
+2015/09/04-21:02:13.501372 7fee4b64a700     Options.verify_compactions: 1
+2015/09/04-21:02:13.501494 7fee4b64a700                    Options.env: 0x7fee44000970
+2015/09/04-21:02:13.501592 7fee4b64a700               Options.info_log: 0x7fee44005d10
+2015/09/04-21:02:13.501715 7fee4b64a700      Options.write_buffer_size: 62914560
+2015/09/04-21:02:13.501814 7fee4b64a700         Options.max_open_files: 1000
+2015/09/04-21:02:13.501928 7fee4b64a700            Options.block_cache: 0x7fee44004e20
+2015/09/04-21:02:13.502020 7fee4b64a700             Options.block_size: 4096
+2015/09/04-21:02:13.502112 7fee4b64a700       Options.block_size_steps: 16
+2015/09/04-21:02:13.502203 7fee4b64a700 Options.block_restart_interval: 16
+2015/09/04-21:02:13.502301 7fee4b64a700            Options.compression: 0
+2015/09/04-21:02:13.502379 7fee4b64a700          Options.filter_policy: NULL
+2015/09/04-21:02:13.502451 7fee4b64a700              Options.is_repair: false
+2015/09/04-21:02:13.502520 7fee4b64a700         Options.is_internal_db: false
+2015/09/04-21:02:13.502590 7fee4b64a700      Options.total_leveldb_mem: 0
+2015/09/04-21:02:13.502659 7fee4b64a700  Options.limited_developer_mem: false
+2015/09/04-21:02:13.502727 7fee4b64a700       Options.delete_threshold: 1000
+2015/09/04-21:02:13.502795 7fee4b64a700       Options.fadvise_willneed: false
+2015/09/04-21:02:13.502857 7fee4b64a700                         crc32c: hardware
+2015/09/04-21:02:13.502913 7fee4b64a700                File cache size: 186646528
+2015/09/04-21:02:13.502954 7fee4b64a700               Block cache size: 188743680
+2015/09/04-21:02:13.574204 7fee4b64a700 Recovering log #3
+2015/09/04-21:02:13.632397 7fee4b64a700 Level-0 table #5: started
+2015/09/04-21:02:13.639086 7fee4b64a700 Level-0 table #5: 0 bytes, 3 keys IO error: /var/dvid/db/sst_0/000005.sst: Invalid argument

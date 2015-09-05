@@ -1,0 +1,26 @@
+2015/09/04-17:01:53.831194 7fff7b169300             Options.comparator: leveldb.InternalKeyComparator
+2015/09/04-17:01:53.831709 7fff7b169300      Options.create_if_missing: 1
+2015/09/04-17:01:53.831713 7fff7b169300        Options.error_if_exists: 1
+2015/09/04-17:01:53.831716 7fff7b169300        Options.paranoid_checks: 0
+2015/09/04-17:01:53.831718 7fff7b169300     Options.verify_compactions: 1
+2015/09/04-17:01:53.831720 7fff7b169300                    Options.env: 0x4d092e0
+2015/09/04-17:01:53.831722 7fff7b169300               Options.info_log: 0x4d0b870
+2015/09/04-17:01:53.831725 7fff7b169300      Options.write_buffer_size: 62914560
+2015/09/04-17:01:53.831727 7fff7b169300         Options.max_open_files: 1024
+2015/09/04-17:01:53.831729 7fff7b169300            Options.block_cache: 0x5004c00
+2015/09/04-17:01:53.831731 7fff7b169300             Options.block_size: 65536
+2015/09/04-17:01:53.831743 7fff7b169300       Options.block_size_steps: 16
+2015/09/04-17:01:53.831745 7fff7b169300 Options.block_restart_interval: 16
+2015/09/04-17:01:53.831747 7fff7b169300            Options.compression: 0
+2015/09/04-17:01:53.831749 7fff7b169300          Options.filter_policy: leveldb.BuiltinBloomFilter
+2015/09/04-17:01:53.831752 7fff7b169300              Options.is_repair: false
+2015/09/04-17:01:53.831754 7fff7b169300         Options.is_internal_db: false
+2015/09/04-17:01:53.831756 7fff7b169300      Options.total_leveldb_mem: 0
+2015/09/04-17:01:53.831758 7fff7b169300  Options.limited_developer_mem: false
+2015/09/04-17:01:53.831760 7fff7b169300       Options.delete_threshold: 1000
+2015/09/04-17:01:53.831762 7fff7b169300       Options.fadvise_willneed: false
+2015/09/04-17:01:53.831764 7fff7b169300                         crc32c: hardware
+2015/09/04-17:01:53.831766 7fff7b169300                File cache size: 186646528
+2015/09/04-17:01:53.831771 7fff7b169300               Block cache size: 188743680
+2015/09/04-17:01:53.841855 7fff7b169300 Delete type=3 #1
+2015/09/04-17:01:53.842060 7fff7b169300 UpdatePenalty: 0
