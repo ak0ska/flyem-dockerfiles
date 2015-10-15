@@ -3,7 +3,7 @@
 This container launches the [DVID](https://github.com/janelia-flyem/dvid) server on container port 8000
 with a DVID database located at /var/dvid/db.  It also deploys the [dvid-console](https://github.com/janelia-flyem/dvid-console) frontend.
 
-To run the image (dvid log info will show in standard out):
+To run the image named flyem/dvid (dvid log is written to /data/logs):
     
     % docker run --volumes-from <OPT:VOLUME> -p <PORT>:8000 -it flyem/dvid
 

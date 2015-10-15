@@ -9,7 +9,9 @@ ENV BUILDEM_DIR $HOME/buildem
 ENV LD_LIBRARY_PATH $BUILDEM_DIR/lib:$LD_LIBRARY_PATH
 ENV PATH /usr/local/go/bin:$BUILDEM_DIR/bin:$PATH
 ENV DVIDDATA /var/dvid
-ENV CONSOLEVERSION 1.3.1
+ENV CONSOLEVERSION 1.8.1
+ENV DVIDVERSION v0.7.0
+ADD ./config.toml /var/config.toml
 
 # install basic dependencies
 RUN apt-get -y update && apt-get install -y \
@@ -30,17 +32,15 @@ RUN wget https://github.com/janelia-flyem/dvid-console/releases/download/v${CONS
 # make dvid from git head
 RUN mkdir $HOME/go; mkdir -p $DVIDSRC; \
     cd $DVIDSRC; cd ..; \
-    git clone https://github.com/janelia-flyem/dvid; \
+    git clone -b $DVIDVERSION https://github.com/janelia-flyem/dvid; \
     cd $DVIDSRC; mkdir build; cd build; \
     cmake -DBUILDEM_DIR=$BUILDEM_DIR ..; \
     make; cmake -D BUILDEM_DIR=$BUILDEM_DIR ..; \
     make dvid
 
-# launch dvid (create new db if necessary)
-# consider writing log to file (log would need to be rolled over somehow once inawhile)
-ENTRYPOINT if [ ! -d "$DVIDDATA" ]; then mkdir -p $DVIDDATA; dvid create $DVIDDATA/db; fi; \
-           ls $DVIDDATA; ls $DVIDDATA/db; \
-           dvid -rpc=0.0.0.0:8001 -http=0.0.0.0:8000 -webclient=/usr/local/dvid-console serve $DVIDDATA/db; sleep 15
+# launch dvid (creates new db in /var/dvid/db unless already provided)
+# logs are written to /data/logs
+ENTRYPOINT dvid serve /var/config.toml; sleep 15
 
 EXPOSE 8000
 
