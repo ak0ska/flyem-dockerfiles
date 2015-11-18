@@ -10,7 +10,7 @@ ENV LD_LIBRARY_PATH $BUILDEM_DIR/lib:$LD_LIBRARY_PATH
 ENV PATH /usr/local/go/bin:$BUILDEM_DIR/bin:$PATH
 ENV DVIDDATA /var/dvid
 ENV CONSOLEVERSION 1.9.0
-ENV DVIDVERSION v0.7.0
+ENV DVIDVERSION v0.7.1
 ADD ./config.toml /var/config.toml
 
 # install basic dependencies
