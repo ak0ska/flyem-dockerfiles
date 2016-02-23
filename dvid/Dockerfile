@@ -12,6 +12,8 @@ ENV DVIDDATA /var/dvid
 ENV CONSOLEVERSION 1.11.0
 ENV DVIDVERSION v0.7.1
 ADD ./config.toml /var/config.toml
+ADD ./configbucket.toml /var/configbucket.toml
+ADD ./dvid.sh /usr/local/bin/dvid.sh
 
 # install basic dependencies
 RUN apt-get -y update && apt-get install -y \
@@ -32,15 +34,17 @@ RUN wget https://github.com/janelia-flyem/dvid-console/releases/download/v${CONS
 # make dvid from git head
 RUN mkdir $HOME/go; mkdir -p $DVIDSRC; \
     cd $DVIDSRC; cd ..; \
-    git clone -b $DVIDVERSION https://github.com/janelia-flyem/dvid; \
+    git clone https://github.com/janelia-flyem/dvid; \
     cd $DVIDSRC; mkdir build; cd build; \
-    cmake -DBUILDEM_DIR=$BUILDEM_DIR ..; \
+    cmake -DDVID_BACKEND="basholeveldb;gbucket" -DBUILDEM_DIR=$BUILDEM_DIR ..; \
     make; cmake -D BUILDEM_DIR=$BUILDEM_DIR ..; \
-    make dvid
+    make dvid; \
+    chmod +x /usr/local/bin/dvid.sh
 
-# launch dvid (creates new db in /var/dvid/db unless already provided)
+# no argument: launch dvid (creates new db in /var/dvid/db unless already provided)
+# one argument: specify google bucket containing dvid instance
 # logs are written to /data/logs
-ENTRYPOINT dvid serve /var/config.toml; sleep 15
+ENTRYPOINT /usr/local/bin/dvid.sh
 
 EXPOSE 8000
 

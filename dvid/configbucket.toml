@@ -1,0 +1,22 @@
+# Configuration for DVID
+
+[server]
+httpAddress = "0.0.0.0:8000"
+rpcAddress = "0.0.0.0:8001"
+webClient = "/usr/local/dvid-console"
+
+# How new data instance ids are generated.
+# Is one of "random" or "sequential".  If "sequential" can set "start_instance_id" property.
+instance_id_gen = "sequential"
+instance_id_start = 100  # new ids start at least from this.
+
+[logging]
+logfile = "/data/logs/dvid.log"
+max_log_size = 500 # MB
+max_log_age = 30   # days
+
+[store]   
+    # if no store.metadata is provided, it defaults to store.mutable configuration
+    [store.mutable]
+    engine = "gbucket"
+    bucket = "ZZ"
