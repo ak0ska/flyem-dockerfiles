@@ -44,7 +44,8 @@ RUN mkdir $HOME/go; mkdir -p $DVIDSRC; \
 # no argument: launch dvid (creates new db in /var/dvid/db unless already provided)
 # one argument: specify google bucket containing dvid instance
 # logs are written to /data/logs
-ENTRYPOINT /usr/local/bin/dvid.sh
+ENTRYPOINT ["/usr/local/bin/dvid.sh"]
+CMD [""]
 
 EXPOSE 8000
 
