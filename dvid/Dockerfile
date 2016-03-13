@@ -10,7 +10,7 @@ ENV LD_LIBRARY_PATH $BUILDEM_DIR/lib:$LD_LIBRARY_PATH
 ENV PATH /usr/local/go/bin:$BUILDEM_DIR/bin:$PATH
 ENV DVIDDATA /var/dvid
 ENV CONSOLEVERSION 1.11.0
-ENV DVIDVERSION v0.7.1
+ENV DVIDVERSION v0.8.0
 ADD ./config.toml /var/config.toml
 ADD ./configbucket.toml /var/configbucket.toml
 ADD ./dvid.sh /usr/local/bin/dvid.sh
@@ -34,7 +34,7 @@ RUN wget https://github.com/janelia-flyem/dvid-console/releases/download/v${CONS
 # make dvid from git head
 RUN mkdir $HOME/go; mkdir -p $DVIDSRC; \
     cd $DVIDSRC; cd ..; \
-    git clone https://github.com/janelia-flyem/dvid; \
+    git clone -b $DVIDVERSION https://github.com/janelia-flyem/dvid; \
     cd $DVIDSRC; mkdir build; cd build; \
     cmake -DDVID_BACKEND="basholeveldb;gbucket" -DBUILDEM_DIR=$BUILDEM_DIR ..; \
     make; cmake -D BUILDEM_DIR=$BUILDEM_DIR ..; \
