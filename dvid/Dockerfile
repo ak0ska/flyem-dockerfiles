@@ -34,8 +34,8 @@ RUN wget https://github.com/janelia-flyem/dvid-console/releases/download/v${CONS
 # make dvid from git head
 RUN mkdir $HOME/go; mkdir -p $DVIDSRC; \
     cd $DVIDSRC; cd ..; \
-    git clone -b $DVIDVERSION https://github.com/janelia-flyem/dvid; \
-    cd $DVIDSRC; mkdir build; cd build; \
+    git clone https://github.com/janelia-flyem/dvid; \
+    cd $DVIDSRC; git reset --hard 2764ffa5b5cba16ffe367d0ee224e4eadf6454c4; mkdir build; cd build; \
     cmake -DDVID_BACKEND="basholeveldb;gbucket" -DBUILDEM_DIR=$BUILDEM_DIR ..; \
     make; cmake -D BUILDEM_DIR=$BUILDEM_DIR ..; \
     make dvid; \
