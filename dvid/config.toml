@@ -17,7 +17,7 @@ max_log_age = 30   # days
 
 [store]   
     # if no store.metadata is provided, it defaults to store.mutable configuration
-    [store.mutable]
+    [store.default]
     engine = "basholeveldb"
     path = "/var/dvid/db"
 
