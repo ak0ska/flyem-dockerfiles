@@ -34,11 +34,13 @@ RUN wget https://github.com/janelia-flyem/dvid-console/releases/download/v${CONS
 # make dvid from git head
 RUN mkdir $HOME/go; mkdir -p $DVIDSRC; \
     cd $DVIDSRC; cd ..; \
-    git clone -b $DVIDVERSION https://github.com/janelia-flyem/dvid; \
-    cd $DVIDSRC; mkdir build; cd build; \
+    git clone https://github.com/janelia-flyem/dvid; \
+    cd $DVIDSRC; git reset --hard be6fadf1d8ea284e84aa414228ba10ea3201efba; mkdir build; cd build; \
     cmake -DDVID_BACKEND="basholeveldb;gbucket" -DBUILDEM_DIR=$BUILDEM_DIR ..; \
     make; cmake -D BUILDEM_DIR=$BUILDEM_DIR ..; \
     make dvid; \
+    cd $GOPATH/src/google.golang.org/cloud; git reset --hard 8bc2457bef5a52c10b0001d481d441141095b130; go install; \
+    cd $DVIDSRC/build; make dvid; \
     chmod +x /usr/local/bin/dvid.sh
 
 # no argument: launch dvid (creates new db in /var/dvid/db unless already provided)
