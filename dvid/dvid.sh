@@ -1,9 +1,10 @@
 #!/bin/bash
 
-if [ ${1} != "" ]; then
-    sed "s/ZZ/${1}/g" /var/configbucket.toml > /var/configtemp.toml
-    dvid serve /var/configtemp.toml
-else
-    dvid serve /var/config.toml
-fi 
+find $DVIDHOME/config -type f -name '*.toml' | xargs sed -i "s#DVIDHOME#${DVIDHOME}#g"
 
+if [ ${1} != "" ]; then
+    sed "s/ZZ/${1}/g" $DVIDHOME/config/configbucket.toml > /$DVIDHOME/config/configtemp.toml
+    dvid -verbose serve $DVIDHOME/config/configtemp.toml
+else
+    dvid -verbose serve $DVIDHOME/config/config.toml
+fi

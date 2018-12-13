@@ -1,0 +1,11 @@
+version: "3.2"
+services:
+  dvid:
+    build: ./dvid
+    image: flyem/dvid:latest
+    ports:
+      - 8080:8000
+    volumes:
+      - "dviddb:/var/dvid"
+volumes:
+  dviddb:
