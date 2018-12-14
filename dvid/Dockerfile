@@ -7,7 +7,8 @@ MAINTAINER Stephen Plaza <plazas@janelia.hhmi.org>
 # ENV GOPATH=$HOME/go
 
 # ENV DVIDCONSOLEVERSION 3.0.1
-ENV DVIDHOME /opt/dvid
+ARG DVIDHOME=/opt/dvid
+ENV DVIDHOME ${DVIDHOME}
 ENV DVIDVERSION 0.8.21
 # ENV DVIDSRC=$GOPATH/src/github.com/janelia-flyem/dvid
 ENV DVIDDATA /var/dvid
@@ -49,6 +50,9 @@ RUN wget https://github.com/janelia-flyem/dvid/releases/download/v${DVIDVERSION}
 COPY ./config/* $DVIDHOME/config/
 COPY ./dvid.sh $DVIDHOME/bin/dvid.sh
 
+# create a log file so dockerize can hook into it before dvid is started by dockerize
+RUN touch /var/log/dvid.log
+
 # download web console
 # RUN wget https://github.com/janelia-flyem/dvid-console/releases/download/v${DVIDCONSOLEVERSION}/dvid-console-${DVIDCONSOLEVERSION}.tar.gz \
   # -q -O /tmp/dvidconsole.tar.gz \
@@ -70,7 +74,7 @@ COPY ./dvid.sh $DVIDHOME/bin/dvid.sh
 # no argument: launch dvid (creates new db in /var/dvid/db unless already provided)
 # one argument: specify google bucket containing dvid instance
 # logs are written to /data/logs
-ENTRYPOINT ["dockerize --stdout $DVIDHOME/logs/dvid.log $DVIDHOME/bin/dvid.sh"]
+ENTRYPOINT ["dockerize", "-stdout", "/var/log/dvid.log", "dvid.sh"]
 CMD [""]
 
 EXPOSE 8000

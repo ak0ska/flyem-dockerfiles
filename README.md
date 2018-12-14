@@ -2,16 +2,16 @@
 
 This repository contains dockerfiles to create [Docker](http://www.docker.io) images for Fly EM software and data.  The goal is to facilitate portability and testing.
 
-Docker commands reequire the Docker daemon to be running (and a light-weight virtual machine for Mac and Windows provided by the Docker installation).
+Docker commands require the Docker daemon to be running (and a light-weight virtual machine for Mac and Windows provided by the Docker installation).
 
 These images are already pre-built on [Docker Hub](https://hub.docker.com/) under the flyem namespace [https://hub.docker.com/u/flyem/](https://hub.docker.com/u/flyem/).
 
 To retrieve image XYZ:
-    
+
     % docker pull flyem/XYZ
 
 If you prefer to build the image XYZ from the dockerfile:
-   
+
     % cd XYZ
     % docker build -t XYZ .
 
