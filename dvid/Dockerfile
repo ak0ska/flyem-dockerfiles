@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER Stephen Plaza <plazas@janelia.hhmi.org>
 
 ENV DVIDHOME /opt/dvid
-ENV DVIDVERSION 0.8.21
+ENV DVIDVERSION 0.8.22
 ENV DVIDDATA /var/dvid
 ENV PATH $DVIDHOME/bin:$PATH
 
